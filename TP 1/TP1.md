@@ -60,6 +60,70 @@ PS C:\Users\grott> ipconfig /all
 
 -  BONUS : Détermine s'il y a un pare-feu actif sur ta machine:
 
+```
+PS C:\Users\grott> Get-NetFirewallProfile | Select-Object Name, Enabled
+
+Name    Enabled
+----    -------
+Domain     True
+Private    True
+Public     True
+```
+
+- Si oui, je veux aussi voir une commande pour lister les règles du pare-feu
+
+```
+PS C:\WINDOWS\system32> Get-NetFirewallRule -all
+
+
+Name                          : SNMPTRAP-In-UDP
+DisplayName                   : Service d’interruption SNMP (UDP entrant)
+Description                   : Règle de trafic entrant pour que le service d’interruption SNMP autorise les interruptions SNMP. [UDP 162]
+DisplayGroup                  : Interruption SNMP
+Group                         : @firewallapi.dll,-50323
+Enabled                       : False
+Profile                       : Private, Public
+Platform                      : {}
+Direction                     : Inbound
+Action                        : Allow
+EdgeTraversalPolicy           : Block
+LooseSourceMapping            : False
+LocalOnlyMapping              : False
+Owner                         :
+PrimaryStatus                 : OK
+Status                        : La règle a été analysée à partir de la banque. (65536)
+EnforcementStatus             : NotApplicable
+PolicyStoreSource             : PersistentStore
+PolicyStoreSourceType         : Local
+RemoteDynamicKeywordAddresses :
+PolicyAppId                   :
+
+Name                          : SNMPTRAP-In-UDP-NoScope
+DisplayName                   : Service d’interruption SNMP (UDP entrant)
+Description                   : Règle de trafic entrant pour que le service d’interruption SNMP autorise les interruptions SNMP. [UDP 162]
+DisplayGroup                  : Interruption SNMP
+Group                         : @firewallapi.dll,-50323
+Enabled                       : False
+Profile                       : Domain
+Platform                      : {}
+Direction                     : Inbound
+Action                        : Allow
+EdgeTraversalPolicy           : Block
+LooseSourceMapping            : False
+LocalOnlyMapping              : False
+Owner                         :
+PrimaryStatus                 : OK
+Status                        : La règle a été analysée à partir de la banque. (65536)
+EnforcementStatus             : NotApplicable
+PolicyStoreSource             : PersistentStore
+PolicyStoreSourceType         : Local
+RemoteDynamicKeywordAddresses :
+PolicyAppId                   :
+
+[...]
+```
+
+
 ## II. Utiliser le réseau
 
 ### 🌞 Envoie un ping vers...
